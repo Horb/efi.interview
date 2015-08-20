@@ -11,7 +11,7 @@ Namespace Customers
             Me.dal = dal
         End Sub
 
-        Public Async Function SaveAsync(customer As DTO.Customers.Customer) As Task Implements ICustomerBLL.SaveAsync
+        Public Async Function SaveAsync(customer As DTO.Customers.Customer) As Task
             Await Me.dal.SaveAsync(customer)
         End Function
 

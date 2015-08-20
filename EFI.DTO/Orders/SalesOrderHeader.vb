@@ -29,7 +29,13 @@
         Property Tax As Decimal
         Property SubTotal As Decimal
 
+        Property CurrencyCode As String
 
+        Property LineItems As IEnumerable(Of SalesOrderLineItem)
+
+        Sub New()
+            Me.LineItems = New List(Of SalesOrderLineItem)
+        End Sub
     End Class
 
 End Namespace

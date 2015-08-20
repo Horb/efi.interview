@@ -23,7 +23,15 @@ textarea {
     .jumbotron {
         margin-top: 20px;
     }
+
     .body-content {
         padding: 0;
     }
+}
+
+.jumbotron.price {
+    float: right;
+    display: inline-block;
+    padding: 10px 30px;
+    min-width: 200px;
 }

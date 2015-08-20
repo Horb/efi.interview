@@ -1,0 +1,12 @@
+﻿Order number to test: SO43665
+
+Url to use: /orders/vieworder.aspx?orderNumber=SO43665
+
+1. Fix any bugs or potential bugs you find on the way.
+2. Format all prices with currencies using the currency code from the Order
+3. Make the Line items (Detail) list databound and load the items from the database for the order. 
+4. Alter the line items (detail) grid to make the quantity value a textbox and changable.
+5. Save the changes to the total price to the sales order header
+6. After changing the line item price, apply the first special offer (if any apply) to the line item which are now applicable.
+7. Change the status value from a number to an text value. The enum values are stored against the description of the field in the SQL database.
+8. Change the value of the Ordered By field to show the first AND last name.

@@ -21,10 +21,11 @@ Namespace Orders
             sql = New StringBuilder("SELECT soh.SalesOrderID, soh.RevisionNumber, soh.OrderDate, soh.DueDate, soh.ShipDate, soh.Status, soh.OnlineOrderFlag, soh.SalesOrderNumber, soh.PurchaseOrderNumber, soh.TotalDue, soh.Freight, ")
 
             sql.
-                AppendLine(" soh.TaxAmt, soh.SubTotal, p.PersonType, p.NameStyle, p.Title, p.FirstName, p.MiddleName, p.Suffix, p.LastName, p.BusinessEntityID ").
+                AppendLine(" soh.TaxAmt, soh.SubTotal, p.PersonType, p.NameStyle, p.Title, p.FirstName, p.MiddleName, p.Suffix, p.LastName, p.BusinessEntityID, cu.ToCurrencyCode as CurrencyCode ").
                 AppendLine("FROM Sales.SalesOrderHeader AS soh INNER JOIN ").
                 AppendLine(" Sales.Customer AS c ON c.CustomerID = soh.CustomerID INNER JOIN ").
-                AppendLine(" Person.Person AS p ON p.BusinessEntityID = c.PersonID ").
+                AppendLine(" Person.Person AS p ON p.BusinessEntityID = c.PersonID LEFT JOIN ").
+                AppendLine(" Sales.CurrencyRate AS cu ON cu.CurrencyRateID = soh.CurrencyRateID ").
                 AppendLine("WHERE        (soh.SalesOrderNumber = @orderno) ")
              
             Using cn = New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("AdventureWorks").ConnectionString)
@@ -53,6 +54,7 @@ Namespace Orders
                                 .SubTotal = reader("SubTotal")
                                 .Tax = reader("TaxAmt")
                                 .TotalDue = reader("TotalDue")
+                                .CurrencyCode = reader("CurrencyCode")
 
                             End With
 
@@ -62,6 +64,10 @@ Namespace Orders
                     End Using
                 End Using
             End Using
+
+            If Not result Is Nothing Then
+                result.LineItems = New List(Of SalesOrderLineItem)({New SalesOrderLineItem() With {.LineTotal = result.TotalDue, .OrderQty = 0}})
+            End If
 
             Return result
 
@@ -98,6 +104,7 @@ Namespace Orders
 
             Return items
         End Function
+
     End Class
 
 End Namespace
