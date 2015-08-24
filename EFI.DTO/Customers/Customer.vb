@@ -2,7 +2,7 @@
 
     Public Class Customer
         Property Id As Integer?
-        Property Name As String
+        Property FirstName As String
     End Class
 
 End Namespace

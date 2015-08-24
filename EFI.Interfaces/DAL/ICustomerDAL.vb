@@ -2,10 +2,7 @@
 
 
     Public Interface ICustomerDAL
-
-        Function SaveAsync(customer As DTO.Customers.Customer) As Task
-        Function Exists(customerId As Integer) As Task(Of Boolean)
-
+        Function GetCustomer(CustomerID As Integer) As DTO.Customers.Customer
     End Interface
 
 End Namespace

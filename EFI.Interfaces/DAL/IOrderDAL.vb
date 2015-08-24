@@ -1,8 +1,7 @@
 ﻿Namespace DAL.Orders
 
     Public Interface IOrderDAL 
-        Function FindOrderWithOrderNumberAsync(ByVal orderNumber As String) As Task(Of DTO.Orders.SalesOrderHeader)
-        Function FindOpenOrdersAsync() As Task(Of IEnumerable(Of DTO.Orders.SalesOrderHeader))
-        Function FindAllSpecialOffersAsync() As Task(Of IEnumerable(Of DTO.Orders.SpecialOffer))
+        Function GetSalesOrder(SalesOrderNumber As String) As DTO.Orders.SalesOrderHeader
+        Function GetSalesOrderItems(SalesOrderID As String) As IEnumerable(Of DTO.Orders.SalesOrderLineItem)
     End Interface
 End Namespace

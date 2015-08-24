@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1>Order
-        <asp:Label ID="lblOrderNo" runat="server" Text="<%#Me.Order.OrderNumber%>"></asp:Label></h1>
+        <asp:Label ID="lblOrderNo" runat="server" Text="<%#Me.Order.SalesOrderNumber%>"></asp:Label></h1>
     <div class="row">
         <div class="col-md-9">
             <div class="panel panel-primary">
@@ -17,13 +17,13 @@
                                 <div class="form-group">
                                     <label for="MainContent_txtPurchaseOrder" class="col-sm-2 control-label">PO #</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="txtPurchaseOrder" CssClass="form-control" runat="server" Text="<%#Me.Order.PurchaseOrder%>" ReadOnly="true"></asp:TextBox>
+                                        <asp:TextBox ID="txtPurchaseOrder" CssClass="form-control" runat="server" Text="<%#Me.Order.PurchaseOrderNumber%>" ReadOnly="true"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="MainContent_txtOrderId" class="col-sm-2 control-label">Order Id</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="txtOrderId" CssClass="form-control" runat="server" Text="<%#Me.Order.OrderId%>" ReadOnly="true"></asp:TextBox>
+                                        <asp:TextBox ID="txtOrderId" CssClass="form-control" runat="server" Text="<%#Me.Order.SalesOrderId%>" ReadOnly="true"></asp:TextBox>
                                     </div>
                                 </div>
 
@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                     <label for="MainContent_txtRevisionNo" class="col-sm-2 control-label">Revision No</label>
                                     <div class="col-sm-10">
-                                        <asp:TextBox ID="txtRevisionNo" ReadOnly="true" CssClass="form-control" runat="server" Text="<%#Me.Order.Revision%>"></asp:TextBox>
+                                        <asp:TextBox ID="txtRevisionNo" ReadOnly="true" CssClass="form-control" runat="server" Text="<%#Me.Order.RevisionNumber %>"></asp:TextBox>
                                     </div>
                                 </div>
 
@@ -57,7 +57,7 @@
                     <asp:Label CssClass="label label-primary" ID="Label2" runat="server" Text='<%# Me.Order.TotalDue%>'></asp:Label></h1>
                 <h4>Tax</h4>
                 <h1>
-                    <asp:Label CssClass="label label-success" ID="Label4" runat="server" Text='<%#Me.Order.Tax%>'></asp:Label></h1>
+                    <asp:Label CssClass="label label-success" ID="Label4" runat="server" Text='<%#Me.Order.TaxAmt%>'></asp:Label></h1>
             </div>
         </div>
     </div>
@@ -66,14 +66,11 @@
         <div class="col-md-12">
             <p class="lead">
                 Status:
-            <asp:Label ID="Label3" runat="server" Text='<%# Me.Order.Status%>'></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text=''></asp:Label>
             </p>
 
             <h4>Ordered By:
-                <asp:Label ID="Label1" runat="server" Text="<%#Me.Order.Customer.Name%>"></asp:Label></h4>
-
-            <!-- TODO: Present Line Items here... -->
-
+                <asp:Label ID="Label1" runat="server" Text="<%#Me.Order.Customer.FirstName%>"></asp:Label></h4>
         </div>
     </div>
 

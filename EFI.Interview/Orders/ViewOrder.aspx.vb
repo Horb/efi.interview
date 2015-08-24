@@ -1,13 +1,13 @@
-﻿Imports EFI.DAL.Orders
+﻿Imports EFI.BLL.Orders
 Imports System.Threading.Tasks
 
 Public Class ViewOrder
     Inherits System.Web.UI.Page
 
-    Private ReadOnly dal As IOrderDAL
+    Dim bll As IOrderBLL
 
     Protected Sub New()
-        Me.dal = DependencyContainer.Default.Get(Of IOrderDAL)()
+        Me.bll = DependencyContainer.Default.Get(Of IOrderBLL)()
     End Sub
 
     Public Property Order As DTO.Orders.SalesOrderHeader
@@ -15,14 +15,13 @@ Public Class ViewOrder
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not IsPostBack Then
 
-            RegisterAsyncTask(New PageAsyncTask(AddressOf LoadOrder))
+            LoadOrder()
 
         End If
     End Sub
 
-    Private Async Function LoadOrder() As Task
+    Private Sub LoadOrder()
         Dim orderNumber As String
-
 
         orderNumber = Request("orderNumber")
 
@@ -30,15 +29,14 @@ Public Class ViewOrder
             Throw New ArgumentNullException("orderNumber")
         End If
 
-        Me.Order = Await dal.FindOrderWithOrderNumberAsync(orderNumber)
+        Me.Order = bll.GetSalesOrder(orderNumber)
 
         If Not Order Is Nothing Then
-
             Me.DataBind()
         Else
             Response.StatusCode = Net.HttpStatusCode.NotFound
         End If
 
-    End Function
+    End Sub
 
 End Class

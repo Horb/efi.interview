@@ -1,7 +1,7 @@
 ﻿Namespace BLL.Orders
 
     Public Interface IOrderBLL
-        Sub ApproveOrder(ByVal order As DTO.Orders.SalesOrderHeader)
+        Function GetSalesOrder(SalesOrderNumber As String) As DTO.Orders.SalesOrderHeader
     End Interface
 
 End Namespace

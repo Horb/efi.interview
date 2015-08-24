@@ -177,12 +177,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.vb" />
-    <Compile Include="App_Start\DependencyConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="Dependencies\DependencyConfig.vb" />
+    <Compile Include="Dependencies\DependencyContainer.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\DependencyContainer.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
