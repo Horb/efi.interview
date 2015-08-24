@@ -49,17 +49,20 @@ Namespace Orders
                     cmd.Parameters.Add(New SqlParameter("@SalesOrderNumber", SalesOrderNumber))
                     Using reader As SqlDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
-                            Return New SalesOrderHeader With {
-                                .SalesOrderId = reader("SalesOrderID"),
-                                .RevisionNumber = reader("RevisionNumber"),
-                                .SalesOrderNumber = reader("SalesOrderNumber"),
-                                .PurchaseOrderNumber = reader("PurchaseOrderNumber"),
-                                .OrderDate = reader("OrderDate"),
-                                .SubTotal = reader("SubTotal"),
-                                .TaxAmt = reader("TaxAmt"),
-                                .TotalDue = reader("TotalDue"),
+                            Dim so As New SalesOrderHeader
+                            With so
+                                .SalesOrderId = reader("SalesOrderID")
+                                .RevisionNumber = reader("RevisionNumber")
+                                .SalesOrderNumber = reader("SalesOrderNumber")
+                                .PurchaseOrderNumber = reader("PurchaseOrderNumber")
+                                .OrderDate = reader("OrderDate")
+                                .SubTotal = reader("SubTotal")
+                                .TaxAmt = reader("TaxAmt")
+                                .TotalDue = reader("TotalDue")
                                 .CustomerID = reader("CustomerID")
-                            }
+                                .CurrencyRateID = reader("CurrencyRateID")
+                            End With
+                            Return so
                         Else
                             Throw New Exception(String.Format("SalesOrderHeader not found for SalesOrderNumber={0}", SalesOrderNumber))
                         End If
@@ -68,8 +71,9 @@ Namespace Orders
             End Using
         End Function
 
-        Public Function GetSalesOrderItems(SalesOrderID As String) As IEnumerable(Of SalesOrderLineItem) Implements IOrderDAL.GetSalesOrderItems
-            Return New List(Of SalesOrderLineItem)
+        Public Function GetSalesOrderDetails(SalesOrderID As String) As IEnumerable(Of SalesOrderDetail) Implements IOrderDAL.GetSalesOrderDetails
+            ' TODO: Return a list of SalesOrderDetail records for the given SalesOrderID
+            Return New List(Of SalesOrderDetail)
         End Function
 
     End Class

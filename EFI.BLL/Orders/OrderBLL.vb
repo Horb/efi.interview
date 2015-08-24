@@ -18,7 +18,7 @@ Namespace Orders
         Public Function GetOrder(SalesOrderNumber As String) As SalesOrderHeader Implements IOrderBLL.GetSalesOrder
             Dim so As SalesOrderHeader
             so = OrderDAL.GetSalesOrder(SalesOrderNumber)
-            so.LineItems = OrderDAL.GetSalesOrderItems(so.SalesOrderId)
+            so.LineItems = OrderDAL.GetSalesOrderDetails(so.SalesOrderId)
             so.Customer = CustomerDAL.GetCustomer(so.CustomerID)
             Return so
         End Function

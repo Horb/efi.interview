@@ -66,7 +66,7 @@
         <div class="col-md-12">
             <p class="lead">
                 Status:
-            <asp:Label ID="Label3" runat="server" Text=''></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text='<%#Me.Order.Status%>'></asp:Label>
             </p>
 
             <h4>Ordered By:
@@ -85,7 +85,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <asp:Repeater ID="rptItems" runat="server" DataSource="<%#Me.Order.LineItems %>" ItemType="EFI.DTO.Orders.SalesOrderLineItem">
+                    <asp:Repeater ID="rptItems" runat="server" DataSource="<%#Me.Order.LineItems %>" ItemType="EFI.DTO.Orders.SalesOrderDetail">
                         <ItemTemplate>
                             <tr>
                                 <td>All Items</td>

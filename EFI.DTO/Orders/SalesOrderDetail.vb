@@ -1,6 +1,6 @@
 ﻿Namespace Orders
 
-    Public Class SalesOrderLineItem
+    Public Class SalesOrderDetail
 
         Property SalesOrderID As Integer
         Property SalesOrderDetailID As Integer

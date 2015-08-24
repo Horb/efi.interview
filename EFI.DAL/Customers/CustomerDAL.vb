@@ -6,7 +6,7 @@ Namespace Customers
     Public Class CustomerDAL
         Implements ICustomerDAL
 
-        Protected Function GetCustomerSQL() As Object
+        Protected Function GetCustomerSQL() As String
             Dim sb As New StringBuilder
             sb.AppendLine("SELECT c.[CustomerID], p.[FirstName] ")
             sb.AppendLine("FROM [Sales].[Customer] c ")
