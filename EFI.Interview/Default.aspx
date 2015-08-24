@@ -4,7 +4,7 @@
 
     <div class="jumbotron">
         <h1>EFI.Interview</h1>
-        <p class="lead">Welcome to your EFI Technical Assesment. Click the button below to begin.</p>
+        <p class="lead">Welcome to your EFI Technical Assessment. Click the button below to begin.</p>
         <p><a href="/Orders/ViewOrder.aspx?orderNumber=SO43665" class="btn btn-primary btn-lg">Get Started &raquo;</a></p>
     </div>
 
@@ -22,7 +22,7 @@
                 <li>Why does the page load fail? Fix or otherwise handle the Exception that is causing the page load to fail.</li>
                 <li>The Order Total and Tax prices are currently shown to 4 decimal places without thousand separators. Make alterations such that the prices appear to 2 decimal places and have commas as thousand separators.</li>
                 <li>The Status currently displays an Integer value. Make alterations such that a description of the status appears instead of the Integer value.</li>
-                <li><code>EFI.DAL.OrdersDAL.GetSalesOrderDetails</code> hasn't been implemeented properly.
+                <li><code>EFI.DAL.OrdersDAL.GetSalesOrderDetails</code> hasn't been implemented properly.
                     <ul>
                         <li>Implement <code>GetSalesOrderDetails</code> such that it returns the SalesOrderDetail records for a SalesOrderID.</li>
                         <li><code>ViewOrder.aspx</code> should output the SalesOrderDetail records for the Order in a table.</li>
