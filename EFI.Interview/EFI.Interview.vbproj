@@ -165,8 +165,9 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
-    <Content Include="Bundle.config" />
-    <None Include="Project_Readme.html" />
+    <Content Include="Bundle.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
